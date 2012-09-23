@@ -1,0 +1,9 @@
+h1 {
+  font-family: Georgia, serif;
+  font-size: 30px;
+  font-weight: bold;
+  padding-top: 20px;
+  text-align: center;
+  color: #FFFFFF;
+  text-shadow: #6374AB -3px -3px 2px;
+}
