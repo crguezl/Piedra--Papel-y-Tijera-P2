@@ -1,6 +1,10 @@
 require 'sinatra'
 require 'erb'
 
+configure do
+  enable :sessions
+end
+
 # before we process a route we'll set the response as plain text
 # and set up an array of viable moves that a player (and the
 # computer) can perform
@@ -10,6 +14,9 @@ before do
 end
 
 get '/' do
+	session[:empate] = 0 unless session[:empate]
+	session[:computer] = 0 unless session[:computer]
+	session[:jugador] = 0 unless session[:jugador]
   erb :vista_inicial
 end
  
@@ -29,12 +36,14 @@ post '/throw' do
 
   if @player_throw == @computer_throw 
     @answer = "EMPATE"
-    erb :index
+		session[:empate] += 1 
   elsif @player_throw == @defeat[@computer_throw]
     @answer = "Has perdido -->  #{@computer_throw}  gana a #{@player_throw}"
-    erb :index
+	session[:computer] += 1
   else
     @answer = "Has ganado --> #{@player_throw}  gana a  #{@computer_throw}"
-    erb :index
+	session[:jugador] += 1
+
   end
+erb :index
 end
