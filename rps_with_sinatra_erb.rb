@@ -17,6 +17,9 @@ get '/' do
 	session[:empate] = 0 unless session[:empate]
 	session[:computer] = 0 unless session[:computer]
 	session[:jugador] = 0 unless session[:jugador]
+  puts " Jugador: #{session[:jugador]}"
+  puts " Ordenador: #{session[:computer]}"
+  puts " Empate: #{session[:empate]}"
   erb :vista_inicial
 end
  
